@@ -49,4 +49,8 @@ public class JOGLRenderer {
     public static int getWindowHeight() {
         return window.getHeight();
     }
+    
+    public static GLProfile getProfile() {
+    	return profile;
+    }
 }

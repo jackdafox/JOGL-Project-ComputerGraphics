@@ -16,13 +16,23 @@ import com.jogamp.opengl.GLEventListener;
 public class JOGLEventListener implements GLEventListener {
     
     public static GL2 gl = null;
-
+    public static JOGLImageResource RoadTex = null;
+    public static JOGLImageResource SidewalkTex = null;
+    public static JOGLImageResource Background = null;
+    
     @Override
     public void init(GLAutoDrawable drawable) {
-        GL2 gl = drawable.getGL().getGL2();
+    	gl = drawable.getGL().getGL2();
         
         //change background color
-        gl.glClearColor(1, 1, 1, 1);
+        gl.glClearColor(0, 0, 0.3f, 1);
+        
+        gl.glEnable(GL2.GL_TEXTURE_2D);
+        
+        RoadTex = new JOGLImageResource("/res/Road.jpg");
+        SidewalkTex = new JOGLImageResource("/res/Sidewalk.jpg");
+        Background = new JOGLImageResource("/res/Star.png");
+        
     }
 
     @Override
@@ -32,24 +42,52 @@ public class JOGLEventListener implements GLEventListener {
     @Override
     public void display(GLAutoDrawable drawable) {
         gl = drawable.getGL().getGL2();
+        
 
-        gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
+        gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+        gl.glLoadIdentity();
         
-        //put your shapes here
+        JOGLHouse.background(Background);
         
-        gl.glBegin(GL2.GL_TRIANGLES);
-            gl.glColor3f(1, 0, 0);
-            gl.glVertex2f(5, 8);
-            gl.glColor3f(0, 1, 0);
-            gl.glVertex2f(3, 2);
-            gl.glColor3f(0, 0, 1);
-            gl.glVertex2f(7, 2);
-        gl.glEnd();
+        
+//      buildings
+        gl.glPushMatrix();
+        gl.glTranslatef(-2, 0, 0);
+        JOGLHouse.building(0.3f, 0.3f, 0.3f);
+        gl.glTranslatef(2, -1, 0);
+        JOGLHouse.building(0.32f, 0.32f, 0.32f);
+        gl.glTranslatef(2, 0.5f, 0);
+        JOGLHouse.building(0.31f, 0.31f, 0.31f);
+        gl.glTranslatef(2, -0.1f, 0);
+        JOGLHouse.building(0.35f, 0.35f, 0.35f);
+        gl.glTranslatef(2, 0.5f, 0);
+        JOGLHouse.building(0.37f, 0.37f, 0.37f);
+        gl.glPopMatrix();
+        
+        //road
+        JOGLHouse.road(RoadTex, SidewalkTex);
+        
+        //fire hydrant
+        gl.glPushMatrix(); 
+        gl.glTranslatef(0, 2f, 0);
+        JOGLObjectsOS.drawHydrant();
+        gl.glTranslatef(2.5f, 0, 0);
+        JOGLObjectsOS.drawHydrant();
+        gl.glTranslatef(4.5f, 0, 0);
+        JOGLObjectsOS.drawHydrant();
+        gl.glPopMatrix();
+        
+        gl.glPushMatrix();  
+        gl.glTranslatef(0, 1.8f, 0);
+        JOGLObjectsOS.drawLampPost();
+        gl.glTranslatef(3, 0, 0);
+        JOGLObjectsOS.drawLampPost();
+        gl.glPopMatrix();
     }
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {
-        GL2 gl = drawable.getGL().getGL2();
+    	gl = drawable.getGL().getGL2();
 
         gl.glMatrixMode(GL2.GL_PROJECTION);
         gl.glLoadIdentity();
