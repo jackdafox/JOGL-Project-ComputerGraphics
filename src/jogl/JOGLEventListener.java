@@ -29,8 +29,8 @@ public class JOGLEventListener implements GLEventListener {
         
         gl.glEnable(GL2.GL_TEXTURE_2D);
         
-        RoadTex = new JOGLImageResource("/res/Road.jpg");
-        SidewalkTex = new JOGLImageResource("/res/Sidewalk.jpg");
+        RoadTex = new JOGLImageResource("/res/road texture.png");
+        SidewalkTex = new JOGLImageResource("/res/sidewalk texture.png");
         Background = new JOGLImageResource("/res/Star.png");
         
     }
