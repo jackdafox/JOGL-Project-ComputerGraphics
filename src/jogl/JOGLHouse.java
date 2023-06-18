@@ -9,59 +9,6 @@ public class JOGLHouse {
 	
 	static float carXValue = 0;
 	static float carXValue2 = 0;
-	
-//	public static void house() {
-//		GL2 gl = JOGLEventListener.gl;
-//		
-//		gl.glColor3f(0.5f, 0.5f, 0.5f);
-//        gl.glBegin(GL2.GL_QUADS);
-//        gl.glVertex2f(4.5f, 4.5f);
-//        gl.glVertex2f(4.5f, 5f);
-//        gl.glVertex2f(5.5f, 5f);
-//        gl.glVertex2f(5.5f, 4.5f);
-//        gl.glEnd();
-//
-//        // Draw the base
-//        gl.glBegin(GL2.GL_QUADS);
-//        gl.glVertex2f(4.5f, 4.5f);
-//        gl.glVertex2f(4.5f, 5f);
-//        gl.glVertex2f(5.5f, 5f);
-//        gl.glVertex2f(5.5f, 4.5f);
-//        gl.glEnd();
-//        
-//        
-//        // Draw the roof (blue)
-//        gl.glColor3f(1f, 0.75f, 0.79f);
-//        gl.glBegin(GL2.GL_TRIANGLES);
-//        gl.glVertex2f(4.4f, 5f);
-//        gl.glVertex2f(5.6f, 5f);
-//        gl.glVertex2f(5f, 5.4f);
-//        gl.glEnd();
-//
-//        // Draw the door (brown)
-//        gl.glColor3f(0.54f, 0.27f, 0.07f);
-//        gl.glBegin(GL2.GL_QUADS);
-//        gl.glVertex2f(4.9f, 4.9f);
-//        gl.glVertex2f(4.9f, 4.9f);
-//        gl.glVertex2f(5.1f, 4.7f);
-//        gl.glVertex2f(5.1f, 4.5f);
-//        gl.glEnd();
-//        
-//        // Draw the windows (white)
-//        gl.glColor3f(1.0f, 1.0f, 1.0f);
-//        gl.glBegin(GL2.GL_QUADS);
-//        gl.glVertex2f(4.6f, 4.8f);
-//        gl.glVertex2f(4.6f, 4.9f);
-//        gl.glVertex2f(4.7f, 4.9f);
-//        gl.glVertex2f(4.7f, 4.7f);
-//
-//        gl.glVertex2f(5.3f, 4.8f);
-//        gl.glVertex2f(5.3f, 4.9f);
-//        gl.glVertex2f(5.4f, 4.9f);
-//        gl.glVertex2f(5.4f, 4.8f);
-//        gl.glEnd();
-//	}
-//	
 
 	public static void background(JOGLImageResource image) {
 		GL2 gl = JOGLEventListener.gl;
@@ -263,15 +210,16 @@ public class JOGLHouse {
 		gl.glTranslatef(1, 2, 0);
 		gl.glScalef(0.5f, 0.5f, 0);
 
+		//car body
 		gl.glBegin(GL2.GL_QUADS);
-		gl.glColor3f(0, 0, 0);
 		gl.glColor3f(0.5f, 0.5f, 0.5f);
 		gl.glVertex2f(3, 5);
 		gl.glVertex2f(5, 5);
 		gl.glVertex2f(5, 3.8f);
 		gl.glVertex2f(3, 3.8f);
 		gl.glEnd();
-
+		
+		//car window
 		gl.glColor3f(0, 0, 0);
 		gl.glBegin(GL2.GL_QUADS);
 		gl.glVertex2f(3.3f, 6);
@@ -279,7 +227,8 @@ public class JOGLHouse {
 		gl.glVertex2f(4.7f, 5.1f);
 		gl.glVertex2f(3.3f, 5.1f);
 		gl.glEnd();
-
+		
+		//tire
 		gl.glPushMatrix();
 		gl.glBegin(GL2.GL_QUADS);
 		gl.glVertex2f(3.2f, 3.7f);
@@ -289,7 +238,8 @@ public class JOGLHouse {
 		gl.glEnd();
 
 		gl.glPushMatrix();
-
+		
+		//rim
 		gl.glColor3f(1, 1, 1);
 		gl.glBegin(GL2.GL_QUADS);
 		gl.glVertex2f(3.5f, 3.4f);
@@ -299,7 +249,8 @@ public class JOGLHouse {
 		gl.glEnd();
 
 		gl.glPopMatrix();
-
+		
+		//tire
 		gl.glTranslatef(1.1f, 0, 0);
 		gl.glColor3f(0, 0, 0);
 		gl.glBegin(GL2.GL_QUADS);
@@ -309,6 +260,7 @@ public class JOGLHouse {
 		gl.glVertex2f(3.2f, 2.9f);
 		gl.glEnd();
 		
+		//rim
 		gl.glColor3f(1, 1, 1);
 		gl.glBegin(GL2.GL_QUADS);
 		gl.glVertex2f(3.5f, 3.4f);
