@@ -19,6 +19,7 @@ public class JOGLEventListener implements GLEventListener {
     public static JOGLImageResource RoadTex = null;
     public static JOGLImageResource SidewalkTex = null;
     public static JOGLImageResource Background = null;
+    public static JOGLImageResource Moon = null;
     
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -29,9 +30,10 @@ public class JOGLEventListener implements GLEventListener {
         
         gl.glEnable(GL2.GL_TEXTURE_2D);
         
-        RoadTex = new JOGLImageResource("/res/Road.jpg");
-        SidewalkTex = new JOGLImageResource("/res/Sidewalk.jpg");
+        RoadTex = new JOGLImageResource("/res/road texture.png");
+        SidewalkTex = new JOGLImageResource("/res/sidewalk texture.png");
         Background = new JOGLImageResource("/res/Star.png");
+        Moon = new JOGLImageResource("/res/Moon.png");
         
     }
 
@@ -49,6 +51,7 @@ public class JOGLEventListener implements GLEventListener {
         
         JOGLHouse.background(Background);
         
+        JOGLHouse.moon(Moon);
         
 //      buildings
         gl.glPushMatrix();
@@ -69,7 +72,7 @@ public class JOGLEventListener implements GLEventListener {
         
         //fire hydrant
         gl.glPushMatrix(); 
-        gl.glTranslatef(0, 2f, 0);
+        gl.glTranslatef(0, 2.25f, 0);
         JOGLObjectsOS.drawHydrant();
         gl.glTranslatef(2.5f, 0, 0);
         JOGLObjectsOS.drawHydrant();
@@ -82,6 +85,13 @@ public class JOGLEventListener implements GLEventListener {
         JOGLObjectsOS.drawLampPost();
         gl.glTranslatef(3, 0, 0);
         JOGLObjectsOS.drawLampPost();
+        gl.glPopMatrix();
+        
+        gl.glPushMatrix();
+        gl.glTranslatef(-3, -1.9f, 0);
+        JOGLHouse.car(0.03f);
+        gl.glTranslatef(0, -1f, 0);
+        JOGLHouse.car2(0.05f);
         gl.glPopMatrix();
     }
 
