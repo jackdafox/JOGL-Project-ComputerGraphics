@@ -129,7 +129,7 @@ public class JOGLHouse {
 
 		carXValue += speed;
 
-		if (carXValue > 10)
+		if (carXValue > 11)
 			carXValue = 0;
 
 		gl.glPushMatrix();
@@ -203,7 +203,7 @@ public class JOGLHouse {
 
 		carXValue2 += speed;
 
-		if (carXValue2 > 10)
+		if (carXValue2 > 11)
 			carXValue2 = 0;
 
 		gl.glPushMatrix();
